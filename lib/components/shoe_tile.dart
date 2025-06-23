@@ -28,9 +28,18 @@ class ShoeTile extends StatelessWidget {
           ),
 
           //Description
-          Text(
-            shoe.description,
-            style: TextStyle(color: Colors.grey),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                shoe.description,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: Colors.grey,
+                ),
+              ),
+            ),
           ),
 
           //price + details

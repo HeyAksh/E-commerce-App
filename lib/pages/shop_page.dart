@@ -1,10 +1,19 @@
+import 'package:e_commerce_app/Utils/shoe_list.dart';
 import 'package:e_commerce_app/components/shoe_tile.dart';
 import 'package:flutter/material.dart';
 
 import '../models/shoe.dart';
 
-class ShopPage extends StatelessWidget {
+class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
+
+  @override
+  State<ShopPage> createState() =>
+      _ShopPageState();
+}
+
+class _ShopPageState extends State<ShopPage> {
+  ShoeList shoeList = ShoeList();
 
   @override
   Widget build(BuildContext context) {
@@ -89,28 +98,21 @@ class ShopPage extends StatelessWidget {
           child: ListView.builder(
             padding: EdgeInsets.only(right: 25),
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: shoeList.shoes.length,
             itemBuilder: (context, index) {
-              Shoe shoe = Shoe(
-                name: 'Air Jordan',
-                price: '2500',
-                imagePath:
-                    'lib/images/JORDAN+MVP.png',
-                description: "abc",
-              );
-
+              Shoe shoe = shoeList.shoes[index];
               return ShoeTile(shoe: shoe);
             },
           ),
         ),
 
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(
             top: 25.0,
             left: 25.0,
             right: 25.0,
           ),
-          child: Divider(color: Colors.white),
+          child: Divider(color: Colors.grey[300]),
         ),
       ],
     );
